@@ -30,11 +30,5 @@ function operate(operator,a,b){
     }
 }
 
-const numbers = document.querySelector('.one-nine');
 
-for(let i=1; i < 10; i++){
-    let div = document.createElement('div');
-    div.textContent = `${i}`;
-    numbers.appendChild(div);
 
-}

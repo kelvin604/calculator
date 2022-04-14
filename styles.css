@@ -1,0 +1,31 @@
+.calculator {
+    border: 2px solid black;
+    height: 800px;
+    width: 600px;
+}
+
+.display {
+    border: 2px solid red;
+    height: 100px;
+    margin: 30px;
+}
+
+.buttons{
+    display: grid;
+    border: 2px solid blue;
+    margin:30px;
+    height: 600px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    
+}
+
+.clear {
+    grid-row: 2/4;
+    grid-column: 4/5;
+}
+
+.equal {
+    grid-row: 4/6;
+    grid-column: 4/5;
+}
