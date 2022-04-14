@@ -1,3 +1,6 @@
+const display = document.querySelector('.display');
+const buttons = document.querySelectorAll('button');
+
 function add(a,b){
     return a + b;
 }
@@ -30,5 +33,10 @@ function operate(operator,a,b){
     }
 }
 
-
+for(let i=0; i < buttons.length; i++){
+    buttons[i].addEventListener('click', ()=> {
+        console.log(buttons[i].textContent);
+        display.textContent = display.textContent.concat(buttons[i].textContent);
+    });
+}
 

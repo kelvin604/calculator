@@ -17,7 +17,7 @@
     height: 600px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    
+
 }
 
 .clear {
@@ -28,4 +28,17 @@
 .equal {
     grid-row: 4/6;
     grid-column: 4/5;
+}
+
+.display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.display-numbers {
+    overflow: hidden;
+    max-width: 40px;
+    height: 18px;
 }
