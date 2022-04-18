@@ -47,7 +47,9 @@ let operandCounter = 0;
 
 for(let i=0; i < buttons.length; i++){
     if(buttons[i] == clear){
-        buttons[i].addEventListener('click', ()=>display.textContent = '');
+        buttons[i].addEventListener('click', ()=>{
+            display.textContent = '';
+        });
         continue;
     }
     
@@ -62,11 +64,7 @@ for(let i=0; i < buttons.length; i++){
             operator = array.filter(string => string == addButton.textContent || string == subtractButton.textContent || string == divideButton.textContent
             || string == multiplyButton.textContent);
             operator = operator[0];
-            console.log(operator);
-            
-            
-            
-            
+
 
             if(expression.includes(operator) == true){
                 let bothNum = expression.split(operator);
@@ -99,6 +97,8 @@ for(let i=0; i < buttons.length; i++){
                         display.textContent = num1 + buttons[i].textContent;
                         
                     }
+                
+                
             }
             
                 
@@ -111,7 +111,17 @@ for(let i=0; i < buttons.length; i++){
     if(buttons[i] == equalButton){
         buttons[i].addEventListener('click', ()=>{
             let sum = evaluate(operator,num1,num2);
+            if(Number.isInteger(sum) == false){
+                return
+            }
+            if(display.textContent == ''){
+                sum = '';
+            }
             display.textContent = sum;
+            
+            
+            
+            
         });
     }
 }
