@@ -42,8 +42,10 @@ let num1 = 0;
 let num2 = 0;
 let operator;
 let array = [];
-let operandCounter = 0;
-
+let string;
+let operator2;
+let secondOperand;
+let firstOperand;
 
 for(let i=0; i < buttons.length; i++){
     if(buttons[i] == clear){
@@ -53,24 +55,21 @@ for(let i=0; i < buttons.length; i++){
         continue;
     }
     
-    if(buttons[i] != equalButton){
-        
+    if(buttons[i] != equalButton){      
         buttons[i].addEventListener('click', ()=> {
             display.textContent = display.textContent.concat(buttons[i].textContent);
             let expression = display.textContent;
             /*get operator*/
-            array = expression.split('');
+            array = expression.split('');   
             console.log(array);
             operator = array.filter(string => string == addButton.textContent || string == subtractButton.textContent || string == divideButton.textContent
             || string == multiplyButton.textContent);
             operator = operator[0];
 
-
             if(expression.includes(operator) == true){
                 let bothNum = expression.split(operator);
-                console.log(bothNum);
-                num1 = parseInt(bothNum[0]);
-                num2 = parseInt(bothNum[1]);
+                num1 = parseFloat(bothNum[0]);
+                num2 = parseFloat(bothNum[1]);
 
                 /* catches double operators in a row*/
                 if(bothNum[1] == '' && bothNum[2] == ''){
@@ -78,7 +77,20 @@ for(let i=0; i < buttons.length; i++){
                     bothNum.pop();
                     display.textContent = bothNum[0] + buttons[i].textContent;
                 }
-                
+                /*if expression starts with negative*/
+                if(bothNum[0] == ''){
+                    /*bothNum[0] = array[0].concat(bothNum[1]);*/
+                    secondOperand = array.slice(display.textContent.indexOf(operator2)+1, array.length + 1);
+                    secondOperand = secondOperand.join('');
+                    bothNum[1] = secondOperand;
+                    firstOperand = array.slice(1, display.textContent.indexOf(operator2));
+                    firstOperand = firstOperand.join('');
+                    bothNum[0] = firstOperand;
+                    num1 = 0-firstOperand;
+                    num2 = parseFloat(bothNum[1]);
+                }      
+                /*return
+
                 /* evaluate on second operator */
                 if(bothNum.length > 2 || bothNum[1].includes(subtractButton.textContent) && bothNum[1] || bothNum[1].includes(multiplyButton.textContent) ||
                 bothNum[1].includes(divideButton.textContent) || bothNum[1].includes(addButton.textContent)){
@@ -97,31 +109,17 @@ for(let i=0; i < buttons.length; i++){
                         display.textContent = num1 + buttons[i].textContent;
                         
                     }
-                
-                
-            }
-            
-                
-        
-            
-        });
-        
+            } 
+        });       
     }
 
     if(buttons[i] == equalButton){
         buttons[i].addEventListener('click', ()=>{
             let sum = evaluate(operator,num1,num2);
-            if(Number.isInteger(sum) == false){
-                return
-            }
             if(display.textContent == ''){
                 sum = '';
             }
             display.textContent = sum;
-            
-            
-            
-            
         });
     }
 }
