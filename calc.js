@@ -23,6 +23,8 @@ function divide(a,b){
     return a / b;
 }
 
+
+
 function evaluate(operator,a,b){
     switch(operator){
         case addButton.textContent:
@@ -50,6 +52,8 @@ let temp;
 let isnegative = 0;
 let wasnegative = 0;
 let bothNum;
+let isnegative2 = 0;
+
 
 
 for(let i=0; i < buttons.length; i++){
@@ -57,6 +61,7 @@ for(let i=0; i < buttons.length; i++){
         buttons[i].addEventListener('click', ()=>{
             display.textContent = '';
             isnegative = 0;
+            isnegative2 = 0;
         });
         continue;
     }
@@ -107,8 +112,6 @@ for(let i=0; i < buttons.length; i++){
                     operator2 = array[array.length - 2];
                     if(operator2 == multiplyButton.textContent || operator2 == divideButton.textContent){
                         isnegative = 1;
-                        
-                        /*array[array.indexOf(operator2) + 1] = subtractButton.textContent;*/
                     }
 
                 }
@@ -117,7 +120,7 @@ for(let i=0; i < buttons.length; i++){
                 }
                 
                 if(bothNum[1].includes('-')){
-                    num2 = 0 - num2;
+                    num2 = num2 * -1;
                     display.textContent = num1 + operator2 + num2;
                 }
 
@@ -126,23 +129,43 @@ for(let i=0; i < buttons.length; i++){
                 }
                 
                 if(isnegative == 1){
-                    num2 = 0 - num2;
+                    num2 = num2 * -1;
                     display.textContent = num1 + operator2 + num2;
                 }
+                /*continue*/
+
                 
                 
                 
+                if(operator2 == multiplyButton.textContent && operator == subtractButton.textContent && array.length > 2||
+                    operator2 == divideButton.textContent && operator == subtractButton.textContent && array.length > 2){
+
+                    console.log('heelellelelelel');
+                    
+                    
+                    isnegative = 1;
+                    
+                    if(num2 > 0 && bothNum[0] != ''){
+                        num2 = num2 * -1;
+                    }
+                    
+                    display.textContent = num1 + operator2 + num2;
+                    if(bothNum[0] == 0){;
+                        display.textContent = operator + num2*-1;
+
+                    }
+                }         
                 
+                if(isnegative2 == 1){
+                    console('l;ppeegggaaa;lj');
+                }
                 
-            
-              
-                
-                
+
                 console.log(num1);
                 console.log(num2);
                 console.log(operator2);
                 console.log(operator);
-                console.log(isnegative);
+                
                 /*index of negative
                 console.log(array[(array.indexOf(operator2) + 1)]);*/
                 
@@ -157,18 +180,35 @@ for(let i=0; i < buttons.length; i++){
                 }
 
                 /* display operator after pressing */
+                
                 if(bothNum[1] == subtractButton.textContent || bothNum[1] == addButton.textContent || bothNum[1] == divideButton.textContent
                     || bothNum[1] == multiplyButton.textContent){
                         display.textContent = num1 + buttons[i].textContent;
                         
                         
-                        /* insert negative bug fix here*/
+                        /*insert negative bug fix here*/
                         
                         
-                    }
+                        
+                        
+                        
+                        
+                }
+                    
             } 
         });       
     }
+    /* come back to this concept
+    if(buttons[i] == multiplyButton || buttons[i] == divideButton){
+        buttons[i].addEventListener('click', ()=>{
+            if(array[0] == subtractButton.textContent){
+                console.log('lmao')
+                display.textContent[0] = '-';
+               
+            }
+        });
+    }
+    */
 
     if(buttons[i] == equalButton){
         buttons[i].addEventListener('click', ()=>{
