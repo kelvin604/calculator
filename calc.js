@@ -56,12 +56,17 @@ let isnegative2 = 0;
 
 
 
+
+
 for(let i=0; i < buttons.length; i++){
     if(buttons[i] == clear){
         buttons[i].addEventListener('click', ()=>{
             display.textContent = '';
             isnegative = 0;
             isnegative2 = 0;
+            /*fixed?*/
+            operator = undefined;
+            operator2 = undefined;
         });
         continue;
     }
@@ -121,6 +126,7 @@ for(let i=0; i < buttons.length; i++){
                 
                 if(bothNum[1].includes('-')){
                     num2 = num2 * -1;
+                    
                     display.textContent = num1 + operator2 + num2;
                 }
 
@@ -133,8 +139,6 @@ for(let i=0; i < buttons.length; i++){
                     display.textContent = num1 + operator2 + num2;
                 }
                 /*continue*/
-
-                
                 
                 
                 if(operator2 == multiplyButton.textContent && operator == subtractButton.textContent && array.length > 2||
@@ -149,18 +153,21 @@ for(let i=0; i < buttons.length; i++){
                         num2 = num2 * -1;
                     }
                     
+                    
                     display.textContent = num1 + operator2 + num2;
+                    
+                    
                     if(bothNum[0] == 0){;
                         display.textContent = operator + num2*-1;
 
                     }
-                }         
-                
-                if(isnegative2 == 1){
-                    console('l;ppeegggaaa;lj');
-                }
-                
+                }    
 
+                if(bothNum[0] != '' && bothNum[1] == ''){
+                    display.textContent = num1 + operator2;
+                }
+                  
+                
                 console.log(num1);
                 console.log(num2);
                 console.log(operator2);
@@ -175,9 +182,8 @@ for(let i=0; i < buttons.length; i++){
                     console.log('greater than two');
                     let sum = evaluate(operator,num1,num2);
                     display.textContent = sum + buttons[i].textContent;
-                    
-
                 }
+
 
                 /* display operator after pressing */
                 
@@ -189,10 +195,7 @@ for(let i=0; i < buttons.length; i++){
                         /*insert negative bug fix here*/
                         
                         
-                        
-                        
-                        
-                        
+        
                 }
                     
             } 
@@ -221,8 +224,12 @@ for(let i=0; i < buttons.length; i++){
             }
 
             display.textContent = sum;
+            console.log(typeof(sum));
+            
+            
         });
     }
+   
     
    
 }
