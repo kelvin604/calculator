@@ -155,6 +155,9 @@ for(let i=0; i < buttons.length; i++){
                     
                     
                     display.textContent = num1 + operator2 + num2;
+                    if(bothNum[0] != '' && bothNum[1] == ''){
+                        display.textContent = num1 + operator2;
+                    }
                     
                     
                     if(bothNum[0] == 0){;
@@ -162,11 +165,16 @@ for(let i=0; i < buttons.length; i++){
 
                     }
                 }    
-
+                
+                
                 if(bothNum[0] != '' && bothNum[1] == ''){
                     display.textContent = num1 + operator2;
                 }
-                  
+                if(bothNum[0] != '' && bothNum[1] == '' && operator == addButton.textContent||
+                bothNum[0] != '' && bothNum[1] == '' && operator == subtractButton.textContent){
+                    display.textContent = num1 + operator;
+                }
+                
                 
                 console.log(num1);
                 console.log(num2);
