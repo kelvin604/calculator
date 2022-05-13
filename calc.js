@@ -123,6 +123,7 @@ for(let i=0; i < buttons.length; i++){
                 if(array[array.length - 1] == multiplyButton.textContent || array[array.length -1] == divideButton.textContent){
                     operator2 = buttons[i].textContent;
                 }
+           
                 
                 if(bothNum[1].includes('-')){
                     num2 = num2 * -1;
@@ -134,10 +135,14 @@ for(let i=0; i < buttons.length; i++){
                     isnegative = 0;
                 }
                 
+                /*bug Here*/
+                
                 if(isnegative == 1){
                     num2 = num2 * -1;
                     display.textContent = num1 + operator2 + num2;
+                    
                 }
+                
                 /*continue*/
                 
                 /*bug might be here*/
@@ -188,7 +193,9 @@ for(let i=0; i < buttons.length; i++){
                 console.log(num1);
                 console.log(num2);
                 console.log(operator2);
+                console.log("operator2^")
                 console.log(operator);
+                console.log("operator^")
                 
                 /*index of negative
                 console.log(array[(array.indexOf(operator2) + 1)]);*/
@@ -200,6 +207,7 @@ for(let i=0; i < buttons.length; i++){
                     console.log('greater than two');
                     let sum = evaluate(operator,num1,num2);
                     display.textContent = sum + buttons[i].textContent;
+                    
                     
                     
                     
@@ -250,8 +258,8 @@ for(let i=0; i < buttons.length; i++){
 
             display.textContent = sum;
             console.log(typeof(sum));
-            
-            
+
+            operator2 = undefined;
         });
     }
     
