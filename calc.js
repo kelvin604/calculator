@@ -53,6 +53,7 @@ let isnegative = 0;
 let wasnegative = 0;
 let bothNum;
 let isnegative2 = 0;
+let screen = display.textContent;
 
 
 
@@ -172,10 +173,9 @@ for(let i=0; i < buttons.length; i++){
                         display.textContent = operator + num2*-1;
 
                     }
-
-                    if(array.includes(multiply.textContent) == false || array.includes(divideButton.textContent)){
-                        operator2 = subtractButton.textContent;
-                    }
+                    /*needs fixing*/
+                    
+                    
                 } 
                 /*this kinda buggy*/
                 
@@ -207,6 +207,23 @@ for(let i=0; i < buttons.length; i++){
                 console.log("operator2^")
                 console.log(operator);
                 console.log("operator^")
+                console.log(screen);
+                console.log(bothNum[1]);
+                console.log(typeof(bothNum[1]));
+                let count = 0;
+                let string2 = bothNum[1].split('');
+                console.log(string2);
+                
+                for(let character of string2){
+                    if(character == subtractButton.textContent || character == '-'){
+                        count += 1;
+                    }
+                }
+                if(count == 2){
+                    operator2 = subtractButton.textContent;
+                }
+                
+                console.log(count);
                 
                 /*index of negative
                 console.log(array[(array.indexOf(operator2) + 1)]);*/
@@ -239,10 +256,7 @@ for(let i=0; i < buttons.length; i++){
                         
         
                 }
-                
-
-                
-                    
+       
             } 
         });       
     }
