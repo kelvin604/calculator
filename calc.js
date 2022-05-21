@@ -224,6 +224,9 @@ for(let i=0; i < buttons.length; i++){
                     isnegative = 0;
                 }
                 
+                if(operator != subtractButton.textContent){
+                    isnegative = 0;
+                }
                 console.log(count);
                 
                 /*index of negative
