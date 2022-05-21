@@ -221,6 +221,7 @@ for(let i=0; i < buttons.length; i++){
                 }
                 if(count == 2){
                     operator2 = subtractButton.textContent;
+                    isnegative = 0;
                 }
                 
                 console.log(count);
