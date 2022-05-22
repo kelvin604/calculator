@@ -201,15 +201,7 @@ for(let i=0; i < buttons.length; i++){
 
                 
                 
-                console.log(num1);
-                console.log(num2);
-                console.log(operator2);
-                console.log("operator2^")
-                console.log(operator);
-                console.log("operator^")
-                console.log(screen);
-                console.log(bothNum[1]);
-                console.log(typeof(bothNum[1]));
+                
                 let count = 0;
                 let string2 = bothNum[1].split('');
                 console.log(string2);
@@ -225,14 +217,24 @@ for(let i=0; i < buttons.length; i++){
                 }
 
                 
-                /* bugged*/
+    
+                /*bugging again*/
                 
-                if(operator != subtractButton.textContent){
-                    num2 = num2 * -1;
+                if(bothNum[1].includes(subtractButton.textContent) == true && bothNum[1] != subtractButton.textContent){
+                    operator2 = subtractButton.textContent;
                 }
                 console.log(count);
                 
-
+                console.log(num1);
+                console.log(num2);
+                console.log(operator2);
+                console.log("operator2^")
+                console.log(operator);
+                console.log("operator^")
+                console.log(screen);
+                console.log(bothNum[1]);
+                console.log(typeof(bothNum[1]));
+                console.log(bothNum);
                 
                 
                 /*index of negative
