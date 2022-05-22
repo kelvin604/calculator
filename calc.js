@@ -223,11 +223,17 @@ for(let i=0; i < buttons.length; i++){
                     operator2 = subtractButton.textContent;
                     isnegative = 0;
                 }
+
+                
+                /* bugged*/
                 
                 if(operator != subtractButton.textContent){
-                    isnegative = 0;
+                    num2 = num2 * -1;
                 }
                 console.log(count);
+                
+
+                
                 
                 /*index of negative
                 console.log(array[(array.indexOf(operator2) + 1)]);*/
