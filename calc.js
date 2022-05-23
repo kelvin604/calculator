@@ -223,6 +223,10 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1].includes(subtractButton.textContent) == true && bothNum[1] != subtractButton.textContent){
                     operator2 = subtractButton.textContent;
                 }
+
+                if(operator != subtractButton.textContent){
+                    isnegative = 0;
+                }
                 console.log(count);
                 
                 console.log(num1);
@@ -231,10 +235,8 @@ for(let i=0; i < buttons.length; i++){
                 console.log("operator2^")
                 console.log(operator);
                 console.log("operator^")
-                console.log(screen);
-                console.log(bothNum[1]);
-                console.log(typeof(bothNum[1]));
-                console.log(bothNum);
+                
+
                 
                 
                 /*index of negative
@@ -294,8 +296,11 @@ for(let i=0; i < buttons.length; i++){
                 sum = evaluate(operator2, num1, num2);
             }
 
-            display.textContent = sum;
+            display.textContent = Math.round(sum * 100) / 100;
+
             console.log(typeof(sum));
+            
+        
 
             operator2 = subtractButton.textContent;
         });
