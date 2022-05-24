@@ -166,6 +166,7 @@ for(let i=0; i < buttons.length; i++){
                     display.textContent = num1 + operator2;
                 }
                 
+
                 if(bothNum[0] != '' && bothNum[1] == '' && operator == addButton.textContent||
                 bothNum[0] != '' && bothNum[1] == '' && operator == subtractButton.textContent){
                     display.textContent = num1 + operator;
@@ -180,6 +181,7 @@ for(let i=0; i < buttons.length; i++){
                         count += 1;
                     }
                 }
+                
                 if(count == 2){
                     operator2 = subtractButton.textContent;
                     isnegative = 0;
@@ -188,10 +190,12 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1].includes(subtractButton.textContent) == true && bothNum[1] != subtractButton.textContent){
                     operator2 = subtractButton.textContent;
                 }
-
-                if(operator != subtractButton.textContent){
+                
+                if(string2[string2.length - 1] == multiplyButton.textContent || string2[string2.length - 1] == divideButton.textContent){
                     isnegative = 0;
                 }
+                
+                
 
                 
                 console.log(num1);
@@ -204,13 +208,16 @@ for(let i=0; i < buttons.length; i++){
                 /* evaluate on second operator */
                 if(bothNum.length > 2 || bothNum[1].includes(subtractButton.textContent) && bothNum[1] || bothNum[1].includes(multiplyButton.textContent) ||
                 bothNum[1].includes(divideButton.textContent) || bothNum[1].includes(addButton.textContent)){
-                    console.log('greater than two');
+                    
                     let sum = evaluate(operator,num1,num2);
+                    /*
                     if(isnegative == 1){
-                        num2 = Math.abs(num2);
-                        sum = evaluate(operator, num1, num2);
-                    }
-                    display.textContent = sum + buttons[i].textContent;
+                        num2 = num2 * -1;
+                        sum = evaluate(operator2, num1, num2);
+                    }*/
+
+                    display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
+                    
 
                 }
                 /* display operator after pressing */
@@ -218,9 +225,7 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1] == subtractButton.textContent || bothNum[1] == addButton.textContent || bothNum[1] == divideButton.textContent
                     || bothNum[1] == multiplyButton.textContent){
                         display.textContent = num1 + buttons[i].textContent;
-                        
-                        
-                        /*insert negative bug fix here*/
+
 
                 }
             } 
