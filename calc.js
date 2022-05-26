@@ -245,6 +245,10 @@ for(let i=0; i < buttons.length; i++){
             if(sum == ''){
                 display.textContent = '';
             }
+            if(num1 == 0 && operator == divideButton.textContent || num1 == 0 && operator == multiplyButton.textContent ||
+                num2 == 0 && operator == multiplyButton.textContent){
+                display.textContent = '0';
+            }
 
             operator2 = subtractButton.textContent;
         });
