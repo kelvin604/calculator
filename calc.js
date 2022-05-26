@@ -47,19 +47,14 @@ let string;
 let operator2;
 let secondOperand;
 let firstOperand;
-let temp;
 let isnegative = 0;
-let wasnegative = 0;
 let bothNum;
-let isnegative2 = 0;
-let screen = display.textContent;
 
 for(let i=0; i < buttons.length; i++){
     if(buttons[i] == clear){
         buttons[i].addEventListener('click', ()=>{
             display.textContent = '';
             isnegative = 0;
-            isnegative2 = 0;
             operator = undefined;
             operator2 = undefined;
         });
@@ -116,7 +111,6 @@ for(let i=0; i < buttons.length; i++){
                 if(array[array.length - 1] == multiplyButton.textContent || array[array.length -1] == divideButton.textContent){
                     operator2 = buttons[i].textContent;
                 }
-                /*bug here? ?????????????????????????????????????????????????????????//*/
                  
                 if(bothNum[1].includes('-')){
                     num2 = num2 * -1;
@@ -199,42 +193,17 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1].includes(addButton.textContent) == true && bothNum[1] != addButton.textContent){
                     operator2 = addButton.textContent;
                 }
-
-
-                /*
-                if(string2[string2.length - 1] == multiplyButton.textContent || string2[string2.length - 1] == divideButton.textContent){
-                    isnegative = 0;
-                }*/
-                
-               
-                
-                
-            
-
-                
-                console.log(num1);
-                console.log(num2);
-                console.log(operator);
-                console.log('op1 ^');
-                console.log(operator2);
-                console.log('op2^');
           
                 /* evaluate on second operator */
                 if(bothNum.length > 2 || bothNum[1].includes(subtractButton.textContent) && bothNum[1] || bothNum[1].includes(multiplyButton.textContent) ||
                 bothNum[1].includes(divideButton.textContent) || bothNum[1].includes(addButton.textContent)){
                     
                     let sum = evaluate(operator,num1,num2);
-                    /*
-                    if(isnegative == 1){
-                        num2 = num2 * -1;
-                        sum = evaluate(operator, num1, num2);
-                    }*/
+                    
                     if(buttons[i] == multiplyButton && operator == subtractButton.textContent){
                         num2 = num2 * -1;
                         sum = evaluate(operator, num1, num2);
                     }
-                    
-                    
 
                     display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
                     isnegative = 0;
