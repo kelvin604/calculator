@@ -130,9 +130,6 @@ for(let i=0; i < buttons.length; i++){
                 if(operator2 == multiplyButton.textContent && operator == subtractButton.textContent && array.length > 2||
                     operator2 == divideButton.textContent && operator == subtractButton.textContent && array.length > 2){
 
-                    console.log('heelellelelelel');
-                    
-                    
                     isnegative = 1;
                     
                     if(num2 > 0 && bothNum[0] != ''){
@@ -193,19 +190,24 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1].includes(addButton.textContent) == true && bothNum[1] != addButton.textContent){
                     operator2 = addButton.textContent;
                 }
-          
+                
                 /* evaluate on second operator */
                 if(bothNum.length > 2 || bothNum[1].includes(subtractButton.textContent) && bothNum[1] || bothNum[1].includes(multiplyButton.textContent) ||
                 bothNum[1].includes(divideButton.textContent) || bothNum[1].includes(addButton.textContent)){
                     
                     let sum = evaluate(operator,num1,num2);
                     
+                    
                     if(buttons[i] == multiplyButton && operator == subtractButton.textContent){
                         num2 = num2 * -1;
                         sum = evaluate(operator, num1, num2);
                     }
+                    
 
                     display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
+                    if(operator2 == divideButton.textContent && num2 == 0){
+                        display.textContent = "you for real?"
+                    }
                     isnegative = 0;
                 }
                 /* display operator after pressing */
@@ -213,6 +215,7 @@ for(let i=0; i < buttons.length; i++){
                 if(bothNum[1] == subtractButton.textContent || bothNum[1] == addButton.textContent || bothNum[1] == divideButton.textContent
                     || bothNum[1] == multiplyButton.textContent){
                         display.textContent = num1 + buttons[i].textContent;
+                        
 
 
                 }
@@ -228,13 +231,20 @@ for(let i=0; i < buttons.length; i++){
             if(display.textContent == ''){
                 sum = '';
             }
-
+            
             if(isnegative == 1){
                 sum = evaluate(operator2, num1, num2);
             }
-
+            
             display.textContent = Math.round(sum * 100) / 100;
-            console.log(typeof(sum));
+            
+            if(operator == divideButton.textContent && num2 == 0){
+                display.textContent = "you for real?"
+            }
+            if(sum == ''){
+                display.textContent = '';
+            }
+
             operator2 = subtractButton.textContent;
         });
     }
