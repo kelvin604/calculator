@@ -116,13 +116,14 @@ for(let i=0; i < buttons.length; i++){
                 if(array[array.length - 1] == multiplyButton.textContent || array[array.length -1] == divideButton.textContent){
                     operator2 = buttons[i].textContent;
                 }
-                     
+                /*bug here? ?????????????????????????????????????????????????????????//*/
+                 
                 if(bothNum[1].includes('-')){
                     num2 = num2 * -1;
                     
                     display.textContent = num1 + operator2 + num2;
                 }
-
+                
                 if(array.includes('-') == false){
                     isnegative = 0;
                 }
@@ -148,12 +149,16 @@ for(let i=0; i < buttons.length; i++){
                     if(bothNum[0] != '' && bothNum[1] == ''){
                         display.textContent = num1 + operator2;
                     }
-
+                    
                     if(bothNum[0] == 0){;
                         display.textContent = operator + num2*-1;
 
-                    }             
-                } 
+                    }   
+                    
+                    
+                }
+
+                
                 
                 /*if first operand is negative and opertor is multiply or divide and not clicking subtract. Make negative */
                 
@@ -191,11 +196,20 @@ for(let i=0; i < buttons.length; i++){
                     operator2 = subtractButton.textContent;
                 }
                 
+                if(bothNum[1].includes(addButton.textContent) == true && bothNum[1] != addButton.textContent){
+                    operator2 = addButton.textContent;
+                }
+
+
+                /*
                 if(string2[string2.length - 1] == multiplyButton.textContent || string2[string2.length - 1] == divideButton.textContent){
                     isnegative = 0;
-                }
+                }*/
+                
+               
                 
                 
+            
 
                 
                 console.log(num1);
@@ -213,12 +227,17 @@ for(let i=0; i < buttons.length; i++){
                     /*
                     if(isnegative == 1){
                         num2 = num2 * -1;
-                        sum = evaluate(operator2, num1, num2);
+                        sum = evaluate(operator, num1, num2);
                     }*/
-
-                    display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
+                    if(buttons[i] == multiplyButton && operator == subtractButton.textContent){
+                        num2 = num2 * -1;
+                        sum = evaluate(operator, num1, num2);
+                    }
+                    
                     
 
+                    display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
+                    isnegative = 0;
                 }
                 /* display operator after pressing */
                 
@@ -231,6 +250,7 @@ for(let i=0; i < buttons.length; i++){
             } 
         });       
     }
+    
 
     if(buttons[i] == equalButton){
         buttons[i].addEventListener('click', ()=>{
