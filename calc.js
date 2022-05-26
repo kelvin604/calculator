@@ -67,7 +67,7 @@ for(let i=0; i < buttons.length; i++){
             let expression = display.textContent;
             /*get operator*/
             array = expression.split('');   
-            console.log(array);
+            
             operator = array.filter(string => string == addButton.textContent || string == subtractButton.textContent || string == divideButton.textContent
             || string == multiplyButton.textContent);
             operator = operator[0];
@@ -76,12 +76,12 @@ for(let i=0; i < buttons.length; i++){
                 bothNum = expression.split(operator);
                 num1 = parseFloat(bothNum[0]);
                 num2 = parseFloat(bothNum[1]);
-                console.log(bothNum);
+                
                 
 
                 /* catches double operators in a row*/
                 if(bothNum[1] == '' && bothNum[2] == ''){
-                    console.log('both empty');
+                    
                     bothNum.pop();
                     display.textContent = bothNum[0] + buttons[i].textContent;
                     
@@ -170,7 +170,7 @@ for(let i=0; i < buttons.length; i++){
 
                 let count = 0;
                 let string2 = bothNum[1].split('');
-                console.log(string2);
+                
                 
                 for(let character of string2){
                     if(character == subtractButton.textContent || character == '-'){
@@ -205,9 +205,10 @@ for(let i=0; i < buttons.length; i++){
                     
 
                     display.textContent = Math.round(sum * 100) / 100 + buttons[i].textContent;
-                    if(operator2 == divideButton.textContent && num2 == 0){
+                    if(operator == divideButton.textContent && num2 == 0){
                         display.textContent = "you for real?"
                     }
+                    
                     isnegative = 0;
                 }
                 /* display operator after pressing */
